@@ -18,8 +18,7 @@ const COURSES = {
 
   UPDATE: (courseId) => `/api/v1/courses/${courseId}`,
 
-  UPDATE_STATUS: (courseId) =>
-    `/api/v1/courses/${courseId}/status`,
+  UPDATE_STATUS: (courseId) => `/api/v1/courses/${courseId}/status`,
 
   DELETE: (courseId) => `/api/v1/courses/${courseId}`,
 
@@ -43,8 +42,8 @@ const SECTIONS = {
 const LESSONS = {
   CREATE: "/api/lessons",
 
-  BY_SECTION: (sectionId) =>
-    `/api/lessons/section/${sectionId}`,
+  BY_SECTION: (sectionId) => `/api/lessons/section/${sectionId}`,
+  BY_SECTION_ADMIN: (sectionId) => `/api/admin/lessons/section/${sectionId}`,
 
   UPDATE: (lessonId) => `/api/lessons/${lessonId}`,
 
@@ -58,11 +57,9 @@ const ENROLLMENTS = {
 
   MY: "/api/enrollments/me",
 
-  COURSE_ENROLLMENTS: (courseId) =>
-    `/api/enrollments/course/${courseId}`,
+  COURSE_ENROLLMENTS: (courseId) => `/api/enrollments/course/${courseId}`,
 
-  UPDATE_STATUS: (enrollmentId) =>
-    `/api/enrollments/${enrollmentId}/status`,
+  UPDATE_STATUS: (enrollmentId) => `/api/enrollments/${enrollmentId}/status`,
 };
 
 /* ===================== PROGRESS ===================== */
@@ -70,8 +67,7 @@ const ENROLLMENTS = {
 const PROGRESS = {
   COMPLETE_LESSON: "/api/progress/complete",
 
-  COURSE_PROGRESS: (courseId) =>
-    `/api/progress/course/${courseId}`,
+  COURSE_PROGRESS: (courseId) => `/api/progress/course/${courseId}`,
 
   LESSON_COMPLETION_MAP: (courseId) =>
     `/api/progress/course/${courseId}/lessons`,
@@ -83,6 +79,14 @@ const DASHBOARD = {
   STUDENT: "/api/dashboard/student",
   INSTRUCTOR: "/api/instructor/dashboard",
   ADMIN: "/api/admin/dashboard",
+};
+
+/* ===================== AI Features ===================== */
+
+const AI = {
+  SUMMARY: (lessonId) => `/api/ai/lesson/${lessonId}/summary`,
+  MCQS: (lessonId) => `/api/ai/lesson/${lessonId}/mcqs`,
+  QNA: (lessonId) => `/api/ai/lesson/${lessonId}/qna`,
 };
 
 /* ===================== PAYMENTS ===================== */
@@ -102,5 +106,6 @@ export const API_ENDPOINTS = {
   ENROLLMENTS,
   PROGRESS,
   DASHBOARD,
+  AI,
   PAYMENTS,
 };
