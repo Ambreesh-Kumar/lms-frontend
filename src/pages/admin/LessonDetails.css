@@ -1,0 +1,136 @@
+/* ===== Page Layout ===== */
+.lesson-page {
+  display: flex;
+  gap: 2rem;
+  padding: 2rem;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+/* ===== Lesson Content ===== */
+.lesson-content {
+  flex: 1;
+  background: #ffffff;
+  border-radius: 16px;
+  padding: 2rem;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.08);
+  max-height: calc(100vh - 5rem); /* minus padding */
+  overflow-y: auto;
+  scrollbar-width: none;
+}
+
+.lesson-header {
+  margin-bottom: 1.5rem;
+}
+
+.lesson-type {
+  display: inline-block;
+  background: #eef2ff;
+  color: #4338ca;
+  font-size: 0.75rem;
+  font-weight: 600;
+  padding: 0.3rem 0.6rem;
+  border-radius: 6px;
+  margin-bottom: 0.5rem;
+}
+
+.lesson-header h1 {
+  font-size: 1.6rem;
+  margin: 0.3rem 0 0;
+  color: #1f2937;
+}
+
+/* ===== Text Lesson ===== */
+.lesson-text {
+  font-size: 1rem;
+  line-height: 1.8;
+  color: #374151;
+  white-space: pre-line;
+  overflow: auto;
+}
+
+/* ===== Video Lesson ===== */
+.lesson-video-wrapper {
+  margin-top: 1rem;
+}
+
+.lesson-video-wrapper video,
+.lesson-video-wrapper iframe {
+  width: 100%;
+  height: 420px;
+  border-radius: 12px;
+  background: #000;
+  border: none;
+}
+
+/* ===== AI Panel ===== */
+.lesson-ai {
+  flex: 1.2; /* slightly larger than lesson content */
+  min-width: 350px; /* ensure minimum width */
+  background: linear-gradient(180deg, #ffffff, #f8fafc);
+  border-radius: 16px;
+  padding: 1.5rem 1px 1.5rem 1.5rem; /* extra right padding for scrollbar */
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.08);
+  position: sticky;
+  top: 2rem;
+  max-height: calc(100vh - 4rem); /* limit height to viewport minus padding */
+  overflow-y: auto; /* scroll if content exceeds max height */
+  scrollbar-width: thin;
+  height: fit-content; /* shrink to content if smaller than max-height */
+}
+
+
+.lesson-ai-header h2 {
+  margin: 0;
+  font-size: 1.1rem;
+}
+
+.lesson-ai-header p {
+  font-size: 0.85rem;
+  color: #6b7280;
+  margin-top: 0.3rem;
+}
+
+/* ===== Empty State ===== */
+.lesson-not-found {
+  text-align: center;
+  padding: 3rem;
+  font-size: 1rem;
+  color: #6b7280;
+}
+
+/* ===== Responsive ===== */
+@media (max-width: 1024px) {
+  .lesson-page {
+    flex-direction: column;
+  }
+
+  .lesson-ai {
+    position: static;
+  }
+
+  .lesson-video-wrapper iframe,
+  .lesson-video-wrapper video {
+    height: 300px;
+  }
+}
+
+@media (max-width: 600px) {
+  .lesson-page {
+    padding: 1rem;
+  }
+
+  .lesson-content,
+  .lesson-ai {
+    padding: 1.2rem;
+  }
+
+  .lesson-header h1 {
+    font-size: 1.3rem;
+  }
+
+  .lesson-video-wrapper iframe,
+  .lesson-video-wrapper video {
+    height: 220px;
+  }
+}

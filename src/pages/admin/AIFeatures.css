@@ -1,0 +1,122 @@
+/* ===== Page Layout ===== */
+.ai-page {
+  display: flex;
+  gap: 2rem;
+  padding: 2rem;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.ai-left {
+  flex: 1.2;
+  background: #fff;
+  padding: 2rem;
+  border-radius: 16px;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.08);
+}
+
+.ai-page-title {
+  font-size: 1.8rem;
+  margin-bottom: 0.5rem;
+  color: #1f2937;
+}
+
+.ai-page-subtitle {
+  font-size: 0.95rem;
+  color: #6b7280;
+  margin-bottom: 1.5rem;
+}
+
+.ai-selects {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.ai-select {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.ai-select label {
+  font-size: 0.85rem;
+  font-weight: 600;
+  margin-bottom: 0.3rem;
+  color: #374151;
+}
+
+.ai-select select {
+  padding: 0.5rem 0.8rem;
+  border-radius: 8px;
+  border: 1px solid #d1d5db;
+  font-size: 0.95rem;
+  background: #f9fafb;
+  outline: none;
+  transition: 0.2s all;
+}
+
+.ai-select select:focus {
+  border-color: #6366f1;
+  box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.2);
+}
+
+/* ===== Lesson Preview ===== */
+.lesson-preview {
+  margin-top: 1rem;
+  max-height: 300px;
+  overflow-y: auto;
+  padding-right: 0.5rem;
+}
+
+.lesson-text-preview {
+  font-size: 1rem;
+  line-height: 1.7;
+  color: #374151;
+  white-space: pre-line;
+}
+
+.lesson-video-wrapper video,
+.lesson-video-wrapper iframe {
+  width: 100%;
+  border-radius: 12px;
+  max-height: 360px;
+  background: #000;
+}
+
+/* ===== AI Actions Panel ===== */
+.ai-right {
+  flex: 2.5;
+  min-width: 400px;
+  background: linear-gradient(180deg, #ffffff, #f8fafc);
+  border-radius: 16px;
+  padding: 1.5rem;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.08);
+  max-height: calc(100vh - 4rem);
+  overflow-y: auto;
+  position: sticky;
+  top: 2rem;
+}
+
+/* ===== Responsive ===== */
+@media (max-width: 1024px) {
+  .ai-page {
+    flex-direction: column;
+  }
+
+  .ai-right {
+    position: static;
+  }
+}
+
+@media (max-width: 600px) {
+  .ai-page {
+    padding: 1rem;
+  }
+
+  .ai-left,
+  .ai-right {
+    padding: 1rem;
+  }
+}

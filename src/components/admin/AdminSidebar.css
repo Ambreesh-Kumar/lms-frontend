@@ -1,0 +1,129 @@
+.admin-sidebar {
+  width: 260px;
+  min-width: 260px;
+  height: 100vh;
+  background: linear-gradient(180deg, #0f172a, #020617);
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  padding: 1.6rem 1.2rem;
+}
+
+/* BRAND */
+.sidebar-top h2 {
+  font-size: 1.6rem;
+  font-weight: 700;
+  margin: 0;
+  letter-spacing: 0.5px;
+}
+
+.sidebar-top h2 span {
+  color: #38bdf8;
+}
+
+.sidebar-tagline {
+  font-size: 0.75rem;
+  color: #94a3b8;
+  margin-top: 0.2rem;
+}
+
+/* USER */
+.sidebar-user {
+  margin: 2rem 0;
+  text-align: center;
+}
+
+.sidebar-user img {
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid #38bdf8;
+}
+
+.user-name {
+  margin: 0.6rem 0 0.1rem;
+  font-weight: 600;
+}
+
+.user-role {
+  font-size: 0.75rem;
+  color: #94a3b8;
+  text-transform: capitalize;
+}
+
+/* NAV */
+.sidebar-nav {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+}
+
+.sidebar-nav a {
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+  padding: 0.7rem 1rem;
+  border-radius: 10px;
+  text-decoration: none;
+  color: #cbd5f5;
+  font-size: 0.9rem;
+  transition: background 0.2s ease, color 0.2s ease;
+}
+
+.sidebar-nav a:hover {
+  background: rgba(56, 189, 248, 0.15);
+  color: #fff;
+}
+
+.sidebar-nav a.active {
+  background: linear-gradient(
+    90deg,
+    rgba(56, 189, 248, 0.3),
+    rgba(56, 189, 248, 0.1)
+  );
+  color: #fff;
+  font-weight: 600;
+}
+
+/* LOGOUT */
+.sidebar-logout {
+  margin-top: auto;
+}
+
+.sidebar-logout button {
+  width: 100%;
+  background: #020617;
+  color: #f87171;
+  border: 1px solid #1e293b;
+  padding: 0.7rem;
+  border-radius: 10px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  transition: background 0.2s ease;
+}
+
+.sidebar-logout button:hover {
+  background: #1e293b;
+}
+
+/* RESPONSIVE */
+@media (max-width: 900px) {
+  .admin-sidebar {
+    width: 80px;
+    min-width: 80px;
+    padding: 1.4rem 0.6rem;
+  }
+
+  .sidebar-top h2,
+  .sidebar-tagline,
+  .user-name,
+  .user-role,
+  .sidebar-nav a span + * {
+    display: none;
+  }
+
+  .sidebar-nav a {
+    justify-content: center;
+  }
+}

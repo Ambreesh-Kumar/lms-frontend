@@ -10,6 +10,11 @@ import InstructorDashboard from "../pages/instructor/InstructorDashboard";
 import StudentDashboard from "../pages/student/StudentDashboard";
 
 import ProtectedRoute from "../components/ProtectedRoute";
+import AdminLayout from "../layouts/AdminLayout";
+import CourseDetails from "../pages/admin/CourseDetails";
+import LessonDetails from "../pages/admin/LessonDetails";
+import CoursesPage from "../pages/admin/CoursesPage";
+import AIFeatures from "../pages/admin/AIFeatures";
 
 const router = createBrowserRouter([
   {
@@ -23,12 +28,19 @@ const router = createBrowserRouter([
       { path: "signup", element: <Signup /> },
 
       {
-        path: "admin/dashboard",
+        path: "admin",
         element: (
           <ProtectedRoute roles={["admin"]}>
-            <AdminDashboard />
+            <AdminLayout />
           </ProtectedRoute>
         ),
+        children: [
+          { path: "dashboard", element: <AdminDashboard /> },
+          { path: "courses/:courseId", element: <CourseDetails /> },
+          { path: "lessons/:lessonId", element: <LessonDetails /> },
+          { path: "courses", element: <CoursesPage /> },
+          { path: "ai-tools", element: <AIFeatures /> },
+        ],
       },
       {
         path: "instructor/dashboard",

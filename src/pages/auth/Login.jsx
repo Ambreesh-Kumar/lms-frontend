@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { loginUser, clearAuthError } from "../../features/auth/authSlice";
 import "./Login.css";
-
+import CircularProgress from "@mui/material/CircularProgress";
 const Login = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -92,7 +92,13 @@ const Login = () => {
             className="login-btn"
             disabled={status === "loading"}
           >
-            {status === "loading" ? "Logging in..." : "Login"}
+            {status === "loading" ? (
+              <div className="loader">
+                <CircularProgress size={26} sx={{ color: "#fff" }}/>
+              </div>
+            ) : (
+              "Login"
+            )}
           </button>
 
           <p className="signup-text">

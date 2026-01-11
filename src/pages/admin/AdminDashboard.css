@@ -1,0 +1,118 @@
+/* ===============================
+   Root Dashboard Layout
+   =============================== */
+
+.admin-dashboard {
+  height: 100%;                 /* Fill Outlet area */
+  display: flex;
+  flex-direction: column;       /* Header + section layout */
+  padding: 2rem;
+  max-width: 1400px;
+  margin: 0 auto;
+  box-sizing: border-box;
+}
+
+/* ===============================
+   Header Section
+   =============================== */
+
+.admin-header {
+  margin-bottom: 2.5rem;        /* Space below header */
+  flex-shrink: 0;               /* Prevent shrinking in flex */
+}
+
+.admin-header h1 {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #0f172a;
+  margin-bottom: 0.6rem;
+}
+
+.admin-header p {
+  max-width: 720px;
+  font-size: 0.95rem;
+  color: #475569;
+  line-height: 1.6;
+}
+
+/* ===============================
+   Courses Section (Card Wrapper)
+   =============================== */
+
+.courses-section {
+  background: #ffffff;
+  padding: 1.8rem;
+  border-radius: 18px;
+  box-shadow: 0 10px 30px rgba(15, 23, 42, 0.08);
+
+  flex: 1;                      /* Take remaining height */
+  display: flex;
+  flex-direction: column;       /* Heading + card container */
+  min-height: 0;                /* Required for scroll to work */
+}
+
+/* ===============================
+   Section Heading
+   =============================== */
+
+.section-heading {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  margin-bottom: 1.5rem;
+  flex-shrink: 0;               /* Keep heading fixed */
+}
+
+.section-heading h2 {
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: #0f172a;
+}
+
+.section-heading span {
+  font-size: 0.85rem;
+  color: #64748b;
+}
+
+/* ===============================
+   Scrollable Course Cards Area
+   =============================== */
+
+.course-card-container {
+  flex: 1;                      /* Fill remaining section space */
+  overflow-y: auto;             /* Enable vertical scrolling */
+  padding-right: 0.5rem;        /* Space for scrollbar */
+  scroll-behavior: smooth;      /* Optional UX polish */
+  padding-top: 10px;
+}
+
+/* ===============================
+   Responsive Adjustments
+   =============================== */
+
+@media (max-width: 768px) {
+  .admin-dashboard {
+    padding: 1.2rem;
+  }
+
+  .admin-header h1 {
+    font-size: 1.6rem;
+  }
+
+  .courses-section {
+    padding: 1.2rem;
+  }
+
+  .course-card-container {
+    padding-right: 0;           /* Avoid mobile overflow */
+  }
+}
+
+.loader{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-top: auto; 
+  height:  100%;
+}

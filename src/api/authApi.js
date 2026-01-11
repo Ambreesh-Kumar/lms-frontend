@@ -22,4 +22,5 @@ export const authApi = {
   logout: () => apiClient.post(API_ENDPOINTS.AUTH.LOGOUT),
 
   refreshToken: () => apiClient.get(API_ENDPOINTS.AUTH.REFRESH_TOKEN),
+  getMyDetails: () => apiClient.get(API_ENDPOINTS.AUTH.MY_Details),
 };

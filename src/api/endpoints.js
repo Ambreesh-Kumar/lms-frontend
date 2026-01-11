@@ -5,6 +5,7 @@ const AUTH = {
   LOGIN: "/api/auth/login",
   REFRESH_TOKEN: "/api/auth/refresh_token",
   LOGOUT: "/api/auth/logout",
+  MY_Details: "/api/auth/me"
 };
 
 /* ===================== COURSES ===================== */

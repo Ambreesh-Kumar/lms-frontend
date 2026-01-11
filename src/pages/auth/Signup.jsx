@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { registerUser, clearAuthError } from "../../features/auth/authSlice";
 import "./Signup.css";
+import CircularProgress from "@mui/material/CircularProgress";
 
 const Signup = () => {
   const dispatch = useDispatch();
@@ -135,7 +136,13 @@ const Signup = () => {
             className="signup-btn"
             disabled={status === "loading"}
           >
-            {status === "loading" ? "Signing up..." : "Sign Up"}
+            {status === "loading" ? (
+              <div className="loader">
+                <CircularProgress size={26} sx={{ color: "#fff" }} />
+              </div>
+            ) : (
+              "Sign Up"
+            )}
           </button>
 
           <p className="login-link">

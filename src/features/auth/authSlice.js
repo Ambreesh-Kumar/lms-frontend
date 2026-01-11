@@ -18,6 +18,17 @@ if (token) {
   }
 }
 
+export const loadUser = createAsyncThunk(
+  "auth/loadUser",
+  async (_, { rejectWithValue }) => {
+    try {
+      const res = await authApi.getMyDetails();
+      return res.data; // { user }
+    } catch (err) {
+      return rejectWithValue("Session expired");
+    }
+  }
+);
 
 export const loginUser = createAsyncThunk(
   "auth/login",
@@ -32,7 +43,6 @@ export const loginUser = createAsyncThunk(
     }
   }
 );
-
 
 export const registerUser = createAsyncThunk(
   "auth/register",
@@ -115,6 +125,30 @@ const authSlice = createSlice({
       .addCase(registerUser.rejected, (state, action) => {
         state.status = "failed";
         state.error = action.payload;
+      });
+    // --- LOAD USER ON REFRESH ---
+    builder
+      .addCase(loadUser.pending, (state) => {
+        state.status = "loading";
+      })
+      .addCase(loadUser.fulfilled, (state, action) => {
+        state.status = "succeeded";
+
+        // Preserve role from token
+        const decoded = jwtDecode(state.accessToken);
+
+        state.user = {
+          ...action.payload.user,
+          role: decoded.role,
+        };
+
+        state.isAuthenticated = true;
+      })
+      .addCase(loadUser.rejected, (state) => {
+        state.user = null;
+        state.accessToken = null;
+        state.isAuthenticated = false;
+        localStorage.removeItem("accessToken");
       });
   },
 });

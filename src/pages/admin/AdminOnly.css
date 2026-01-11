@@ -1,0 +1,98 @@
+.admin-only-page {
+  min-height: 100vh;
+  width: 100vw;
+  background: radial-gradient(
+      circle at top,
+      rgba(99, 102, 241, 0.15),
+      transparent 40%
+    ),
+    linear-gradient(180deg, #020617, #020617);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+}
+
+.admin-only-card {
+  background: rgba(15, 23, 42, 0.9);
+  border: 1px solid rgba(148, 163, 184, 0.15);
+  backdrop-filter: blur(12px);
+  border-radius: 16px;
+  padding: 3rem 2.8rem;
+  max-width: 640px;
+  width: 100%;
+  text-align: center;
+  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.55);
+}
+
+.lock-icon {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+}
+
+.admin-only-card h1 {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #f8fafc;
+  margin-bottom: 1rem;
+}
+
+.subtitle {
+  font-size: 1.05rem;
+  color: #cbd5f5;
+  margin-bottom: 1rem;
+  line-height: 1.6;
+}
+
+.description {
+  font-size: 0.95rem;
+  color: #94a3b8;
+  line-height: 1.7;
+  margin-bottom: 1.8rem;
+}
+
+.interviewer-note {
+  background: rgba(99, 102, 241, 0.12);
+  border: 1px solid rgba(99, 102, 241, 0.3);
+  border-radius: 12px;
+  padding: 1.2rem 1.4rem;
+  margin-bottom: 2rem;
+  text-align: left;
+}
+
+.interviewer-note span {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #a5b4fc;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.interviewer-note p {
+  margin-top: 0.5rem;
+  font-size: 0.95rem;
+  color: #e0e7ff;
+  line-height: 1.6;
+}
+
+.logout-btn {
+  width: 100%;
+  padding: 0.9rem 1.2rem;
+  background: linear-gradient(135deg, #6366f1, #4f46e5);
+  color: white;
+  font-size: 0.95rem;
+  font-weight: 600;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.logout-btn:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 10px 30px rgba(99, 102, 241, 0.4);
+}
+
+.logout-btn:active {
+  transform: translateY(0);
+}

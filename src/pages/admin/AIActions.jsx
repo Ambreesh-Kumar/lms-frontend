@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import {
   generateSummary,
@@ -6,6 +6,7 @@ import {
   generateQnA,
   clearAI,
 } from "../../features/ai/aiSlice";
+import "./AIActions.css";
 
 const AIActions = ({ lessonId }) => {
   const dispatch = useDispatch();
@@ -13,13 +14,11 @@ const AIActions = ({ lessonId }) => {
     (state) => state.ai
   );
 
-  console.log(`summary:`, summary);
-  console.log(`mcqs:`, mcqs);
-  console.log(`qna:`, qna);
-  console.log(`status:`, status);
-  console.log(`error:`, error);
-
   const [questionInput, setQuestionInput] = useState("");
+
+  useEffect(() => {
+    dispatch(clearAI());
+  }, [dispatch]);
 
   const handleGenerateSummary = () => {
     dispatch(clearAI());
@@ -37,168 +36,134 @@ const AIActions = ({ lessonId }) => {
     dispatch(generateQnA({ lessonId, question: questionInput }));
   };
 
-  return (
-    <div
-      style={{
-        marginTop: "2rem",
-        border: "1px solid #ddd",
-        padding: "1rem",
-        borderRadius: "8px",
-      }}
-    >
-      <h3>AI Actions</h3>
+  const handleClearAI = () => {
+    dispatch(clearAI());
+    setQuestionInput(""); // optional UX reset
+  };
 
-      {/* Buttons */}
-      <div
-        style={{
-          display: "flex",
-          gap: "1rem",
-          flexWrap: "wrap",
-          marginBottom: "1rem",
-        }}
-      >
-        <button onClick={handleGenerateSummary} disabled={status === "loading"}>
+  return (
+    <div className="ai-panel">
+      {/* ===== Header ===== */}
+      <div className="ai-panel-header">
+        <h4>⚡ AI Actions</h4>
+        <p>Summaries, questions & assessments</p>
+        {(summary || mcqs?.length > 0 || qna) && (
+          <button className="ai-clear-btn" onClick={handleClearAI}>
+            ✖ Clear
+          </button>
+        )}
+      </div>
+
+      {/* ===== Actions ===== */}
+      <div className="ai-actions">
+        <button
+          className="ai-btn primary"
+          onClick={handleGenerateSummary}
+          disabled={status === "loading"}
+        >
           Generate Summary
         </button>
-        <button onClick={handleGenerateMCQs} disabled={status === "loading"}>
+
+        <button
+          className="ai-btn secondary"
+          onClick={handleGenerateMCQs}
+          disabled={status === "loading"}
+        >
           Generate MCQs
         </button>
       </div>
 
-      {/* Q&A input */}
-      <div style={{ marginBottom: "1rem" }}>
+      {/* ===== Q&A ===== */}
+      <div className="ai-qna">
         <input
           type="text"
+          placeholder="Ask anything about this lesson..."
           value={questionInput}
           onChange={(e) => setQuestionInput(e.target.value)}
-          placeholder="Ask a question"
-          style={{ padding: "0.5rem", width: "300px", marginRight: "0.5rem" }}
         />
-        <button onClick={handleGenerateQnA} disabled={status === "loading"}>
+        <button
+          className="ai-btn ask"
+          onClick={handleGenerateQnA}
+          disabled={status === "loading"}
+        >
           Ask
         </button>
       </div>
 
-      {/* Loading/Error */}
-      {status === "loading" && <p>Loading...</p>}
-      {status === "failed" && <p style={{ color: "red" }}>{error}</p>}
+      {/* ===== Status ===== */}
+      {status === "loading" && (
+        <p className="ai-loading">⏳ AI is thinking...</p>
+      )}
+      {status === "failed" && <p className="ai-error">{error}</p>}
 
-      {/* AI Responses */}
+      {/* ===== Summary ===== */}
       {summary && (
-        <div style={{ marginBottom: "1rem" }}>
-          <h4>Summary:</h4>
+        <div className="ai-output">
+          <h4>📘 Lesson Summary</h4>
 
           {summary.includes("Video URL:") ? (
-            <>
-              {/* Extract the URL */}
-              {(() => {
-                const urlMatch = summary.match(/Video URL:\s*(\S+)/);
-                const videoUrl = urlMatch ? urlMatch[1] : null;
+            (() => {
+              const urlMatch = summary.match(/Video URL:\s*(\S+)/);
+              const videoUrl = urlMatch ? urlMatch[1] : null;
 
-                if (!videoUrl) return <pre>{summary}</pre>;
+              if (!videoUrl) return <pre>{summary}</pre>;
 
-                // If YouTube link, embed iframe
-                if (
-                  videoUrl.includes("youtube.com") ||
-                  videoUrl.includes("youtu.be")
-                ) {
-                  // Convert youtu.be to embed link
-                  let embedUrl = videoUrl;
-                  if (videoUrl.includes("youtu.be")) {
-                    const videoId = videoUrl.split("/").pop().split("?")[0];
-                    embedUrl = `https://www.youtube.com/embed/${videoId}`;
-                  } else if (videoUrl.includes("youtube.com/watch")) {
-                    const urlParams = new URLSearchParams(
-                      videoUrl.split("?")[1]
-                    );
-                    const videoId = urlParams.get("v");
-                    embedUrl = `https://www.youtube.com/embed/${videoId}`;
-                  }
+              if (
+                videoUrl.includes("youtube.com") ||
+                videoUrl.includes("youtu.be")
+              ) {
+                let embedUrl = videoUrl;
 
-                  return (
-                    <iframe
-                      width="560"
-                      height="315"
-                      src={embedUrl}
-                      title="Lesson Video"
-                      frameBorder="0"
-                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                      allowFullScreen
-                    ></iframe>
-                  );
+                if (videoUrl.includes("youtu.be")) {
+                  const id = videoUrl.split("/").pop().split("?")[0];
+                  embedUrl = `https://www.youtube.com/embed/${id}`;
+                } else {
+                  const params = new URLSearchParams(videoUrl.split("?")[1]);
+                  embedUrl = `https://www.youtube.com/embed/${params.get("v")}`;
                 }
 
-                // For direct video URL (.mp4, etc.)
                 return (
-                  <video src={videoUrl} controls style={{ maxWidth: "100%" }} />
+                  <iframe src={embedUrl} title="Lesson Video" allowFullScreen />
                 );
-              })()}
-            </>
+              }
+
+              return <video src={videoUrl} controls />;
+            })()
           ) : (
-            <pre
-              style={{
-                whiteSpace: "pre-wrap",
-                background: "#f8f8f8",
-                padding: "1rem",
-                borderRadius: "6px",
-              }}
-            >
-              {summary}
-            </pre>
+            <pre>{summary}</pre>
           )}
         </div>
       )}
 
+      {/* ===== MCQs ===== */}
       {mcqs && mcqs.length > 0 && (
-        <div style={{ marginBottom: "1.5rem" }}>
-          <h4>MCQs:</h4>
+        <div className="ai-output">
+          <h4>📝 Practice MCQs</h4>
 
-          {mcqs.map((q, i) => {
-            const optionLabels = ["A", "B", "C", "D"];
+          {mcqs.map((q, i) => (
+            <div key={i} className="mcq-card">
+              <p className="mcq-question">
+                {i + 1}. {q.question}
+              </p>
 
-            return (
-              <div
-                key={i}
-                style={{
-                  marginBottom: "1.2rem",
-                  padding: "1rem",
-                  border: "1px solid #ddd",
-                  borderRadius: "8px",
-                  background: "#fafafa",
-                }}
-              >
-                <p>
-                  <strong>
-                    {i + 1}. {q.question}
-                  </strong>
-                </p>
+              <ul>
+                {q.options.map((opt, idx) => (
+                  <li key={idx}>
+                    <strong>{String.fromCharCode(65 + idx)}.</strong> {opt}
+                  </li>
+                ))}
+              </ul>
 
-                <ul style={{ listStyle: "none", paddingLeft: 0 }}>
-                  {q.options.map((opt, idx) => (
-                    <li key={idx} style={{ marginBottom: "0.25rem" }}>
-                      <strong>{optionLabels[idx]}.</strong> {opt}
-                    </li>
-                  ))}
-                </ul>
-
-                <p
-                  style={{
-                    marginTop: "0.75rem",
-                    color: "green",
-                    fontWeight: "bold",
-                  }}
-                >
-                  Answer: {q.correctAnswer}
-                </p>
-              </div>
-            );
-          })}
+              <p className="mcq-answer">✔ Correct Answer: {q.correctAnswer}</p>
+            </div>
+          ))}
         </div>
       )}
 
+      {/* ===== QnA ===== */}
       {qna && (
-        <div style={{ marginBottom: "1rem" }}>
-          <h4>Answer:</h4>
+        <div className="ai-output">
+          <h4>💡 AI Answer</h4>
           <p>
             <strong>Q:</strong> {qna.data.question}
           </p>
