@@ -4,6 +4,7 @@ import AIActions from "./AIActions";
 import "./LessonDetails.css";
 import { useEffect } from "react";
 import { fetchLessonsBySectionAdmin } from "../../features/lessons/lessonSlice";
+import CircularProgress from "@mui/material/CircularProgress";
 
 const LessonDetails = () => {
   const { lessonId } = useParams();
@@ -11,18 +12,22 @@ const LessonDetails = () => {
   const dispatch = useDispatch();
 
   const sectionId = location.state?.sectionId;
-  const { list: lessons } = useSelector((state) => state.lessons);
+  const { list: lessons, status } = useSelector((state) => state.lessons);
 
   const lesson = lessons.find((l) => l._id === lessonId);
 
-    useEffect(() => {
+  useEffect(() => {
     if (!lesson && sectionId) {
       dispatch(fetchLessonsBySectionAdmin(sectionId));
     }
   }, [lesson, sectionId, dispatch]);
 
   if (status === "loading") {
-    return <p className="lesson-not-found">Loading lesson...</p>;
+    return (
+      <div className="loader">
+        <CircularProgress size={36} />
+      </div>
+    );
   }
 
   if (!lesson) return <p className="lesson-not-found">Lesson not found</p>;
