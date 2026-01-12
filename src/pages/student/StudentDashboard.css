@@ -1,0 +1,84 @@
+.student-restricted-page {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #f9fafb;
+  padding: 2rem;
+  width: 100vw;
+}
+
+.student-restricted-card {
+  max-width: 720px;
+  background: #ffffff;
+  padding: 3rem;
+  border-radius: 16px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
+}
+
+.student-restricted-card h1 {
+  font-size: 1.8rem;
+  color: #1f2937;
+  margin-bottom: 0.5rem;
+  text-align: center;
+}
+
+.subtitle {
+  font-size: 1rem;
+  color: #6b7280;
+  margin-bottom: 2rem;
+  text-align: center;
+}
+
+.content {
+  font-size: 1rem;
+  color: #374151;
+  line-height: 1.7;
+}
+
+.highlight-box {
+  margin: 1.5rem 0;
+  padding: 1.2rem;
+  background: #f1f5f9;
+  border-left: 4px solid #10b981;
+  border-radius: 8px;
+}
+
+.highlight-box ul {
+  margin-top: 0.5rem;
+  padding-left: 1.5rem;
+}
+
+.highlight-box li {
+  margin-bottom: 0.4rem;
+}
+
+.interviewer-note {
+  margin-top: 1.8rem;
+  font-weight: 600;
+  color: #111827;
+}
+
+
+.logout-btn {
+  margin-top: 2rem;
+  width: 100%;
+  padding: 0.9rem;
+  font-size: 1rem;
+  font-weight: 600;
+  color: #ffffff;
+  background-color: #ef4444;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: background-color 0.2s ease, transform 0.1s ease;
+}
+
+.logout-btn:hover {
+  background-color: #dc2626;
+  transform: translateY(-1px);
+}
+
+.logout-btn:active {
+  transform: translateY(0);
+}

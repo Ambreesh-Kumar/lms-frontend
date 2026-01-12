@@ -131,6 +131,8 @@
   color: #4f46e5;
   font-weight: 600;
   cursor: pointer;
+  outline: none !important;
+  text-decoration: none !important;
 }
 
 .link-btn:hover {

@@ -26,9 +26,25 @@
 }
 
 .lock-icon {
-  font-size: 3rem;
-  margin-bottom: 1rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 1.5rem;
+  color: #38bdf8;
 }
+
+.lock-icon svg {
+  width: 60px;   /* size of lock */
+  height: 60px;
+}
+.note-icon {
+  font-size: 28px;
+  color: #34d399;
+  
+  flex-shrink: 0;
+  margin-bottom: -6px;
+}
+
 
 .admin-only-card h1 {
   font-size: 2rem;

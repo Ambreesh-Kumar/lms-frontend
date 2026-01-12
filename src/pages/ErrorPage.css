@@ -1,0 +1,143 @@
+/* ===== Full Page Wrapper ===== */
+.error-wrapper {
+  position: relative;
+  min-height: 100vh;
+  width: 100vw;
+  background: linear-gradient(135deg, #eef2ff, #f8fafc);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+    Roboto, Ubuntu, sans-serif;
+}
+
+/* ===== Background Decorative Circles ===== */
+.error-bg-circle {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(60px);
+  opacity: 0.45;
+}
+
+.circle-1 {
+  width: 320px;
+  height: 320px;
+  background: #6366f1;
+  top: -80px;
+  left: -80px;
+}
+
+.circle-2 {
+  width: 280px;
+  height: 280px;
+  background: #22d3ee;
+  bottom: -90px;
+  right: -90px;
+}
+
+/* ===== Main Card ===== */
+.error-container {
+  background: #ffffff;
+  padding: 3.5rem 4rem;
+  border-radius: 24px;
+  text-align: center;
+  max-width: 520px;
+  width: 100%;
+  box-shadow: 0 30px 60px rgba(15, 23, 42, 0.18);
+  z-index: 1;
+}
+
+/* Badge */
+.error-badge {
+  display: inline-block;
+  padding: 0.35rem 0.9rem;
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  border-radius: 999px;
+  background: #eef2ff;
+  color: #4f46e5;
+  margin-bottom: 1.2rem;
+}
+
+/* Error Code */
+.error-code {
+  font-size: 5.5rem;
+  font-weight: 800;
+  color: #4f46e5;
+  margin: 0;
+  line-height: 1;
+}
+
+/* Heading */
+.error-heading {
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: #0f172a;
+  margin: 1rem 0 0.8rem;
+}
+
+/* Text */
+.error-text {
+  font-size: 0.95rem;
+  color: #475569;
+  max-width: 420px;
+  margin: 0 auto 2.2rem;
+  line-height: 1.6;
+}
+
+/* ===== Actions ===== */
+.error-actions {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+/* Buttons */
+.btn {
+  padding: 0.65rem 1.6rem;
+  font-size: 0.9rem;
+  font-weight: 500;
+  border-radius: 999px;
+  text-decoration: none;
+  transition: all 0.25s ease;
+}
+
+/* Primary Button */
+.btn-primary {
+  background: linear-gradient(135deg, #6366f1, #4f46e5);
+  color: #ffffff;
+}
+
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 25px rgba(79, 70, 229, 0.35);
+}
+
+/* Outline Button */
+.btn-outline {
+  border: 1px solid #c7d2fe;
+  color: #4f46e5;
+  background: transparent;
+}
+
+.btn-outline:hover {
+  background: #eef2ff;
+}
+
+/* ===== Responsive ===== */
+@media (max-width: 600px) {
+  .error-container {
+    padding: 2.5rem 2rem;
+  }
+
+  .error-code {
+    font-size: 4.2rem;
+  }
+
+  .error-heading {
+    font-size: 1.4rem;
+  }
+}

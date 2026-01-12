@@ -1,6 +1,8 @@
 import { useNavigate } from "react-router-dom";
 import { logout } from "../../features/auth/authSlice";
 import { useDispatch } from "react-redux";
+import LockIcon from "@mui/icons-material/Lock";
+import VerifiedUserOutlinedIcon from "@mui/icons-material/VerifiedUserOutlined";
 import "./AdminOnly.css";
 // import { ShieldLock } from "lucide-react";
 
@@ -16,9 +18,11 @@ const AdminOnly = () => {
   return (
     <div className="admin-only-page">
       <div className="admin-only-card">
-        <div className="lock-icon">🔒</div>
+        <div className="lock-icon">
+          <LockIcon fontSize="large" />
+        </div>
 
-       <h1> Admin Access Only</h1>
+        <h1> Admin Access Only</h1>
 
         <p className="subtitle">
           This LMS showcases <strong>AI-powered learning tools</strong>{" "}
@@ -32,10 +36,13 @@ const AdminOnly = () => {
         </p>
 
         <div className="interviewer-note">
-          <span>👨‍💼 Interviewer Note</span>
+          <VerifiedUserOutlinedIcon className="note-icon" />
+          <span> For Interview Review</span>
           <p>
-            Admin credentials will be shared during the interview to allow full
-            evaluation of the LMS and its AI capabilities.
+            Full access to the LMS, including all AI-driven features, is
+            available via Admin credentials. These credentials will be shared
+            during the interview to enable a complete technical and functional
+            evaluation of the platform.
           </p>
         </div>
 
