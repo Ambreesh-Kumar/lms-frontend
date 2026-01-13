@@ -151,6 +151,7 @@ const Signup = () => {
               type="button"
               onClick={() => navigate("/login")}
               className="link-btn"
+              disabled={status === "loading"}
             >
               Login
             </button>

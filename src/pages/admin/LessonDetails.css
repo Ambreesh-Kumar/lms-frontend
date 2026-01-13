@@ -16,7 +16,25 @@
   box-shadow: 0 12px 30px rgba(0, 0, 0, 0.08);
   max-height: calc(100vh - 5rem); /* minus padding */
   overflow-y: auto;
-  scrollbar-width: none;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(100, 116, 139, 0.4) transparent;
+}
+/* Chrome / Edge / Safari */
+.lesson-content::-webkit-scrollbar {
+  width: 6px;
+}
+
+.lesson-content::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.lesson-content::-webkit-scrollbar-thumb {
+  background-color: rgba(100, 116, 139, 0.35);
+  border-radius: 999px;
+}
+
+.lesson-content::-webkit-scrollbar-thumb:hover {
+  background-color: rgba(100, 116, 139, 0.6);
 }
 
 .lesson-header {

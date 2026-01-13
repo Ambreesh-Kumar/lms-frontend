@@ -84,7 +84,7 @@ const AIFeatures = () => {
     <div className="ai-page">
       {/* ===== LEFT: Lesson Selector + Preview ===== */}
       <div className="ai-left">
-        <h1 className="ai-page-title">AI Features Demo</h1>
+        <h1 className="ai-page-title">AI-Driven Learning Tools</h1>
         <p className="ai-page-subtitle">
           Select a course → section → lesson to generate summaries, MCQs, and Q&A
         </p>

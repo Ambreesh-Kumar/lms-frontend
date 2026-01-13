@@ -1,3 +1,4 @@
+import Tooltip from "@mui/material/Tooltip";
 import "./CourseCards.css";
 
 const CourseCards = ({ courses, onCourseClick }) => {
@@ -21,9 +22,11 @@ const CourseCards = ({ courses, onCourseClick }) => {
 
           <div className="course-card-body">
             <h3>{course.title}</h3>
-            <p className="course-description">
-              {course.description?.slice(0, 90)}...
-            </p>
+            <Tooltip title={course.description || ""} placement="top" arrow>
+              <p className="course-description">
+                {course.description?.slice(0, 90)}...
+              </p>
+            </Tooltip>
 
             <div className="course-meta">
               <span>₹{course.price}</span>

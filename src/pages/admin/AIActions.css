@@ -61,6 +61,7 @@
   border-radius: 8px;
   border: 1px solid #ddd;
   font-size: 0.85rem;
+  outline-color: skyblue;
 }
 
 /* States */
@@ -132,4 +133,68 @@
   .ai-qna {
     flex-direction: column;
   }
+}
+.ai-video-player {
+  width: 100%;          /* full container width */
+  height: 300px;        /* increased height */
+  border-radius: 12px;  /* optional rounded corners */
+  border: none;         /* clean border */
+  box-shadow: 0 4px 20px rgba(0,0,0,0.08); /* subtle shadow */
+}
+
+/* Responsive adjustment for smaller screens */
+@media (max-width: 768px) {
+  .ai-video-player {
+    height: 250px; /* smaller height on mobile */
+  }
+}
+
+.ai-res-header{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* ===============================
+   AI Clear Button (Modern & Subtle)
+   =============================== */
+
+.ai-clear-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  outline: none !important;
+
+  padding: 0.45rem 0.75rem;
+  font-size: 0.75rem;
+  font-weight: 500;
+
+  color: #ef4444; /* soft red (danger but not harsh) */
+  background: #fff5f5; /* light red background */
+  border: 1px solid #fecaca;
+  border-radius: 999px; /* pill style */
+
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+
+/* Hover effect */
+.ai-clear-btn:hover {
+  background: #fee2e2;
+  color: #dc2626;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 10px rgba(220, 38, 38, 0.15);
+}
+
+/* Active (click) */
+.ai-clear-btn:active {
+  transform: translateY(0);
+  box-shadow: none;
+}
+
+/* Optional: focus (keyboard accessibility) */
+.ai-clear-btn:focus-visible {
+  outline: 2px solid #fecaca;
+  outline-offset: 2px;
 }

@@ -129,3 +129,71 @@
     width: 100%;
   }
 }
+.courses-header {
+  margin-bottom: 2rem;
+  padding: 1.5rem 2rem;
+  background: linear-gradient(90deg, #eef2ff, #f3f4f6);
+  border-radius: 18px;
+  box-shadow: 0 8px 20px rgba(15, 23, 42, 0.08);
+}
+
+.header-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+.header-top-heading{
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+}
+
+.header-icon {
+  font-size: 2rem;
+  color: #6366f1; /* gradient color if you want, can animate hover */
+}
+
+.header-top h1 {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: #0f172a;
+  margin: 0;
+}
+
+.course-count {
+  background: linear-gradient(135deg, #6366f1, #4f46e5);
+  color: #fff;
+  padding: 0.25rem 0.8rem;
+  border-radius: 999px;
+  font-weight: 500;
+  font-size: 0.9rem;
+}
+
+.subtitle {
+  margin-top: 0.6rem;
+  font-size: 0.95rem;
+  color: #475569;
+  line-height: 1.5;
+}
+
+/* Responsive tweaks */
+@media (max-width: 768px) {
+  .header-top h1 {
+    font-size: 1.5rem;
+  }
+
+  .header-icon {
+    font-size: 1.5rem;
+  }
+
+  .course-count {
+    font-size: 0.8rem;
+    padding: 0.2rem 0.6rem;
+  }
+
+  .subtitle {
+    font-size: 0.85rem;
+  }
+}

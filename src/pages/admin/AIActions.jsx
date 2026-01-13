@@ -47,11 +47,6 @@ const AIActions = ({ lessonId }) => {
       <div className="ai-panel-header">
         <h4>⚡ AI Actions</h4>
         <p>Summaries, questions & assessments</p>
-        {(summary || mcqs?.length > 0 || qna) && (
-          <button className="ai-clear-btn" onClick={handleClearAI}>
-            ✖ Clear
-          </button>
-        )}
       </div>
 
       {/* ===== Actions ===== */}
@@ -99,7 +94,14 @@ const AIActions = ({ lessonId }) => {
       {/* ===== Summary ===== */}
       {summary && (
         <div className="ai-output">
-          <h4>📘 Lesson Summary</h4>
+          <div className="ai-res-header">
+            <h4>📘 Lesson Summary</h4>
+            {(summary || mcqs?.length > 0 || qna) && (
+              <button className="ai-clear-btn" onClick={handleClearAI}>
+                Clear
+              </button>
+            )}
+          </div>
 
           {summary.includes("Video URL:") ? (
             (() => {
@@ -107,7 +109,9 @@ const AIActions = ({ lessonId }) => {
               const videoUrl = urlMatch ? urlMatch[1] : null;
 
               if (!videoUrl) return <pre>{summary}</pre>;
-
+              // Supported YouTube formats:
+              // - https://youtu.be/VIDEO_ID
+              // - https://www.youtube.com/watch?v=VIDEO_ID
               if (
                 videoUrl.includes("youtube.com") ||
                 videoUrl.includes("youtu.be")
@@ -123,7 +127,9 @@ const AIActions = ({ lessonId }) => {
                 }
 
                 return (
-                  <iframe src={embedUrl} title="Lesson Video" allowFullScreen />
+                  // iframe is required to embed YouTube's official video player
+                  // It safely loads the YouTube player inside the current page
+                  <iframe src={embedUrl} title="Lesson Video" allowFullScreen className="ai-video-player"/>
                 );
               }
 
@@ -138,7 +144,14 @@ const AIActions = ({ lessonId }) => {
       {/* ===== MCQs ===== */}
       {mcqs && mcqs.length > 0 && (
         <div className="ai-output">
-          <h4>📝 Practice MCQs</h4>
+          <div>
+            <h4>📝 Practice MCQs</h4>
+            {(summary || mcqs?.length > 0 || qna) && (
+              <button className="ai-clear-btn" onClick={handleClearAI}>
+                Clear
+              </button>
+            )}
+          </div>
 
           {mcqs.map((q, i) => (
             <div key={i} className="mcq-card">
@@ -149,6 +162,11 @@ const AIActions = ({ lessonId }) => {
               <ul>
                 {q.options.map((opt, idx) => (
                   <li key={idx}>
+                    {/* 
+                    Convert option index to alphabetical label:
+                    65 is ASCII code for 'A', so:
+                    idx = 0 → A, 1 → B, 2 → C, ...
+                    */}
                     <strong>{String.fromCharCode(65 + idx)}.</strong> {opt}
                   </li>
                 ))}
@@ -163,7 +181,14 @@ const AIActions = ({ lessonId }) => {
       {/* ===== QnA ===== */}
       {qna && (
         <div className="ai-output">
-          <h4>💡 AI Answer</h4>
+          <div>
+            <h4>💡 AI Answer</h4>
+            {(summary || mcqs?.length > 0 || qna) && (
+              <button className="ai-clear-btn" onClick={handleClearAI}>
+                Clear
+              </button>
+            )}
+          </div>
           <p>
             <strong>Q:</strong> {qna.data.question}
           </p>
