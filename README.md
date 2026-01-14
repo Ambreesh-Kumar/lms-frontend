@@ -14,7 +14,7 @@ This project demonstrates a **real-world LMS workflow** with:
  | Component                      | URL                                                                            |
 | ------------------------------ | ------------------------------------------------------------------------------ |
 | **Backend API (Base Url)**                | [https://lms-backend-rmh5.onrender.com](https://lms-backend-rmh5.onrender.com) |
-| **Frontend (Admin Dashboard)** | *Coming soon / Local Deployment*                                               |
+| **Frontend (Admin Dashboard)** | [http://lms-frontend-seven-taupe.vercel.app/](http://lms-frontend-seven-taupe.vercel.app/)                                               |
 
 ### 🧩 Why This Project?
 This LMS demonstrates the **integration of cutting-edge AI features into a real-world education platform**, allowing:
