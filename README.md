@@ -45,12 +45,12 @@ src/
 
 #### Backend Architecture Overview
 Backend repo:  [LMS Backend](https://github.com/Ambreesh-Kumar/lms-backend.git)
-```
+```text
 src/
 ├── config/
-│   ├── db.js                     # MongoDB connection
-│   ├── cloudinary.js             # Media storage
-│   └── razorpay.js               # Razorpay SDK instance
+│   ├── db.js                         # MongoDB connection
+│   ├── cloudinary.js                 # Cloudinary configuration
+│   └── razorpay.js                   # Razorpay SDK instance
 │
 ├── controllers/
 │   ├── authController.js
@@ -60,20 +60,27 @@ src/
 │   ├── enrollmentController.js
 │   ├── progressController.js
 │   ├── paymentController.js
-│   ├── aiController.js            # AI lesson intelligence
-│   ├── dashboardController.js     # Student / Instructor / Admin dashboards
+│   ├── aiController.js               # AI controller
+│   ├── adminDashboardController.js   # Admin dashboards
+│   ├── dashboardController.js        # Student dashboards
+│   ├── instructorDashboardController.js
+│   └── payment/
+│       └── checkout.controller.js    # Handle EJS checkout flow
 │
 ├── routes/
 │   ├── authRoutes.js
 │   ├── courseRoutes.js
 │   ├── sectionRoutes.js
 │   ├── lessonRoutes.js
+│   ├── adminLessonRoutes.js          # Admin lesson access routes
 │   ├── enrollmentRoutes.js
 │   ├── progressRoutes.js
-│   ├── paymentRoutes.js           # API-based Razorpay flow
-│   ├── paymentPageRoutes.js       # EJS checkout pages
-│   ├── aiRoutes.js                # Admin-only AI APIs
-│   └── dashboardRoutes.js         # Role-based dashboards
+│   ├── paymentRoutes.js              # API-based Razorpay flow
+│   ├── payment.ejs.routes.js         # EJS checkout pages
+│   ├── aiRoutes.js                   # Admin-only AI APIs
+│   ├── adminDashboardRoutes.js       # Admin dashboard routes
+│   ├── dashboardRoutes.js            # Student dashboard routes
+│   └── instructorDashboardRoutes.js  # Instructor dashboard routes
 │
 ├── models/
 │   ├── User.js
@@ -85,36 +92,43 @@ src/
 │   └── Payment.js
 │
 ├── services/
-│   ├── ai.service.js              # Gemini integration (stateless, secure)
-│   └── razorpay.service.js        # Razorpay order & verification logic
+│   └── ai.service.js                 # Gemini integration (stateless, secure)
 │
 ├── middlewares/
 │   ├── auth.js
+│   ├── authFromQuery.js              # Auth via query token for EJS checkout
 │   ├── authOptional.js
 │   ├── requireAdmin.js
 │   ├── requireInstructor.js
 │   ├── multer.js
 │   └── errorHandler.js
 │
-├── views/                         # Server-rendered payment UI
+├── views/                            # Server-rendered payment UI
 │   ├── checkout.ejs
 │   ├── success.ejs
-│   ├── failed.ejs
-│   ├── canceled.ejs
-│   └── already-paid.ejs
+│   ├── failure.ejs
+│   ├── cancel.ejs
+│   ├── alreadyPaid.ejs
+│   └── unauthorized.ejs              # Token expired during checkout
 │
 ├── public/
 │   └── css/
+│       └── payments/
+│           ├── base.css
+│           └── checkout.css
 │
 ├── utils/
 │   ├── ApiError.js
 │   ├── AsyncHandler.js
-│   └── jwt.js
+│   ├── jwt.js
+│   ├── cloudinaryDelete.js
+│   ├── cloudinaryUpload.js
+│   └── processThumbnail.js           # Thumbnail size handling
 │
-├── app.js                         # Express app setup
-└── server.js                      # Server bootstrap
-
+├── app.js                            # Express app setup
+└── server.js                         # Server bootstrap
 ```
+
 ##### Capabilities Used by Frontend:
 * **Courses, Sections, Lessons APIs** — fetch & display content
 * **AI APIs** — lesson summary, MCQs, Q&A (Admin only)
@@ -201,7 +215,12 @@ Body: { "question": "What is generative AI?" }
 
 ### 👨‍💻 Developer
 **Ambreesh Kumar — Full Stack Developer**  
-Specializes in **AI integrations, full-stack architecture, and production-grade applications**
+Specializes in **AI integrations, full-stack architecture, and production-grade applications**  
+
+- **GitHub**: https://github.com/Ambreesh-Kumar 
+- **LinkedIn**: [https://www.linkedin.com/in/ambreesh-kumar](https://www.linkedin.com/in/ambreesh-kumar?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app)
+- **Email**: kumarambreesh70@gmail.com
+
 
 ### License & Usage
 © 2025 Ambreesh Kumar. All rights reserved.
