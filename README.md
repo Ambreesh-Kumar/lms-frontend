@@ -223,4 +223,4 @@ Specializes in **AI integrations, full-stack architecture, and production-grade 
 
 
 ### License & Usage
-© 2025 Ambreesh Kumar. All rights reserved.
+© 2026 Ambreesh Kumar. All rights reserved.
