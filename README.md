@@ -219,7 +219,7 @@ Specializes in **AI integrations, full-stack architecture, and production-grade 
 
 - **GitHub**: https://github.com/Ambreesh-Kumar 
 - **LinkedIn**: [https://www.linkedin.com/in/ambreesh-kumar](https://www.linkedin.com/in/ambreesh-kumar?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app)
-- **Email**: kumarambreesh70@gmail.com
+- **Email**: kambreesh0@gmail.com
 
 
 ### License & Usage
