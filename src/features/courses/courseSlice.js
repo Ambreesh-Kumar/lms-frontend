@@ -7,13 +7,20 @@ export const fetchCourses = createAsyncThunk(
   "courses/fetchCourses",
   async (_, { rejectWithValue }) => {
     try {
-      const res = await apiClient.get(API_ENDPOINTS.COURSES.PUBLISHED);
+      const res = await apiClient.get(API_ENDPOINTS.COURSES.PUBLISHED, {
+        params: {
+          limit: 20,
+          page: 1,
+        },
+      });
       // res.data.data contains array of courses
       return res.data.data;
     } catch (err) {
-      return rejectWithValue(err.response?.data?.message || "Failed to fetch courses");
+      return rejectWithValue(
+        err.response?.data?.message || "Failed to fetch courses",
+      );
     }
-  }
+  },
 );
 
 const courseSlice = createSlice({
